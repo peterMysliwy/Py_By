@@ -1,0 +1,8 @@
+<RCC>
+  <qresource prefix="toolMenu">
+    <file>actions/play-circle.svg</file>
+    <file>actions/arrow-left.svg</file>
+    <file>actions/arrow-right.svg</file>
+    <file>actions/stop-circle.svg</file>
+  </qresource>
+</RCC>
