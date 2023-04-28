@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'power_supplyprPLlR.ui'
+## Form generated from reading UI file 'power_supplyBLkwAM.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.3.1
 ##
@@ -208,6 +208,15 @@ class Ui_powerSupply(object):
 
         self.horizontalLayout.addItem(self.horizontalSpacer_2)
 
+        QWidget.setTabOrder(self.comboBox, self.lineEdit)
+        QWidget.setTabOrder(self.lineEdit, self.start)
+        QWidget.setTabOrder(self.start, self.stop)
+        QWidget.setTabOrder(self.stop, self.step)
+        QWidget.setTabOrder(self.step, self.add)
+        QWidget.setTabOrder(self.add, self.clear)
+        QWidget.setTabOrder(self.clear, self.items)
+        QWidget.setTabOrder(self.items, self.checkBox)
+        QWidget.setTabOrder(self.checkBox, self.checkBox_2)
 
         self.retranslateUi(powerSupply)
 

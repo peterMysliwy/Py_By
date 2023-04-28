@@ -1,6 +1,14 @@
+def float_list(start, stop, step):
+    count = int((stop - start) / step)
+    values = []
+    for a in range(count):
+        values.append(round(a * step, 2))
+    return values
 
+start = 0
+stop = 2
+step = 0.1
+values = float_list(start, stop, step)
+values.append(round(stop, 2))
 
-views = {'chart': 'base_uis.UI_chart', 'power supply': 'loaders.Ps_loader', 'clicker': 'loaders.loadClickMe'}
-
-for key in views.keys():
-    print(f'key = {key}')
+print(values)

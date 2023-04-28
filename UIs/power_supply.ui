@@ -333,6 +333,18 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>comboBox</tabstop>
+  <tabstop>lineEdit</tabstop>
+  <tabstop>start</tabstop>
+  <tabstop>stop</tabstop>
+  <tabstop>step</tabstop>
+  <tabstop>add</tabstop>
+  <tabstop>clear</tabstop>
+  <tabstop>items</tabstop>
+  <tabstop>checkBox</tabstop>
+  <tabstop>checkBox_2</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

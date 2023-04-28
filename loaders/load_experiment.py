@@ -2,15 +2,9 @@ from PySide6 import QtGui
 from PySide6.QtCore import Qt, QEvent
 from PySide6.QtWidgets import QMainWindow, QTreeWidgetItem, QWidget, QMenu, QTreeWidget
 import importlib
-
 from experimental.container import Ui_MainWindow
 
 PLUG_IN = {'chart': 'base_uis.UI_chart', 'power supply': 'loaders.Ps_loader', 'clicker': 'loaders.loadClickMe'}
-
-
-def launch_view(name: str):
-    process = importlib.import_module(PLUG_IN[name], '.')
-    return process.Loader()
 
 
 class Experiment(QMainWindow, Ui_MainWindow):
@@ -20,7 +14,7 @@ class Experiment(QMainWindow, Ui_MainWindow):
         self.setupUi(self)
         self.treeWidget.installEventFilter(self)
 
-        chart = launch_view('chart')
+        chart = self.launch_view('chart')
         self.stackedWidget.addWidget(chart)
         self.tree_root(chart)
         self.treeWidget.topLevelItem(0).text(0)
@@ -35,11 +29,16 @@ class Experiment(QMainWindow, Ui_MainWindow):
                 menu.addAction(key)
 
             item = menu.exec_(QtGui.QCursor.pos())
-            process = launch_view(item.text())
-            self.stackedWidget.addWidget(process)
-            self.tree_append(self.treeWidget.currentItem().text(0), process)
-            return True
+            if item is not None:
+                process = self.launch_view(item.text())
+                self.stackedWidget.addWidget(process)
+                self.tree_append(self.treeWidget.currentItem().text(0), process)
+                return True
         return super().eventFilter(source, event)
+
+    def launch_view(self, name: str):
+        process = importlib.import_module(PLUG_IN[name], '.')
+        return process.Loader(self)
 
     def tree_append(self, parent: str, child_widget: QWidget):
         """
@@ -63,6 +62,12 @@ class Experiment(QMainWindow, Ui_MainWindow):
         parent.setData(1, 0, widget)
 
     def change_stacked_view(self, currentItem: QTreeWidgetItem):
+        """
+            ################################################################################
+            the plugin object is stored in tree column 1 here we recall the selected item
+            and tell the stacked widget to display
+            ################################################################################
+        """
         items = self.treeWidget.findItems(currentItem.text(0), Qt.MatchFlag.MatchRecursive, 0)
         data = items[0].data(1, 0)
         if data is not None:

@@ -4,7 +4,7 @@ from UIs.ui_clickMe import Ui_clickMe
 
 # class Clicker(QWidget, Ui_clickMe):
 class Loader(QWidget, Ui_clickMe):
-    def __init__(self):
-        super().__init__(parent=None)
+    def __init__(self, parent):
+        super().__init__()
 
         self.setupUi(self)
