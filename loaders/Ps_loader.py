@@ -1,4 +1,4 @@
-from PySide6.QtWidgets import QWidget, QWidgetItem, QTreeWidgetItem
+from PySide6.QtWidgets import QWidget
 from UIs.ui_power_supply import Ui_powerSupply
 
 

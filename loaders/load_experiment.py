@@ -22,7 +22,7 @@ class Experiment(QMainWindow, Ui_MainWindow):
         # events
         self.treeWidget.itemClicked.connect(self.change_stacked_view)
 
-    def eventFilter(self, source: QTreeWidget, event: QEvent):
+    def eventFilter(self, source: QTreeWidget, event: QEvent) -> bool:
         if event.type() == QEvent.ContextMenu and source is self.treeWidget:
             menu = QMenu()
             for key in PLUG_IN.keys():
@@ -64,8 +64,7 @@ class Experiment(QMainWindow, Ui_MainWindow):
     def change_stacked_view(self, currentItem: QTreeWidgetItem):
         """
             ################################################################################
-            the plugin object is stored in tree column 1 here we recall the selected item
-            and tell the stacked widget to display
+            change the selected item and tell the stacked widget to display
             ################################################################################
         """
         items = self.treeWidget.findItems(currentItem.text(0), Qt.MatchFlag.MatchRecursive, 0)
