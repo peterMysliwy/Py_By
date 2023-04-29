@@ -1,5 +1,5 @@
 from PySide6 import QtGui
-from PySide6.QtCore import Qt, QEvent
+from PySide6.QtCore import Qt, QEvent, Slot
 from PySide6.QtWidgets import QMainWindow, QTreeWidgetItem, QWidget, QMenu, QTreeWidget
 import importlib
 from experimental.container import Ui_MainWindow

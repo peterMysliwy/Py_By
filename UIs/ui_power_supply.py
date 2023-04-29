@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'power_supplyBLkwAM.ui'
+## Form generated from reading UI file 'power_supplyanwGNq.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.3.1
+## Created by: Qt User Interface Compiler version 6.4.1
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -15,22 +15,23 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QCheckBox, QComboBox, QDoubleSpinBox,
-    QFrame, QGridLayout, QHBoxLayout, QLabel,
-    QLineEdit, QListWidget, QListWidgetItem, QPushButton,
-    QSizePolicy, QSpacerItem, QVBoxLayout, QWidget)
+from PySide6.QtWidgets import (QAbstractSpinBox, QApplication, QCheckBox, QComboBox,
+    QDoubleSpinBox, QFrame, QGridLayout, QHBoxLayout,
+    QLabel, QLineEdit, QListWidget, QListWidgetItem,
+    QPushButton, QSizePolicy, QSpacerItem, QVBoxLayout,
+    QWidget)
 
 class Ui_powerSupply(object):
     def setupUi(self, powerSupply):
         if not powerSupply.objectName():
             powerSupply.setObjectName(u"powerSupply")
-        powerSupply.resize(551, 328)
+        powerSupply.resize(561, 333)
         self.horizontalLayout = QHBoxLayout(powerSupply)
         self.horizontalLayout.setObjectName(u"horizontalLayout")
         self.frame_7 = QFrame(powerSupply)
         self.frame_7.setObjectName(u"frame_7")
-        self.frame_7.setMinimumSize(QSize(260, 0))
-        self.frame_7.setMaximumSize(QSize(260, 16777215))
+        self.frame_7.setMinimumSize(QSize(305, 0))
+        self.frame_7.setMaximumSize(QSize(305, 16777215))
         self.frame_7.setFrameShape(QFrame.Box)
         self.frame_7.setFrameShadow(QFrame.Raised)
         self.verticalLayout_6 = QVBoxLayout(self.frame_7)
@@ -62,16 +63,18 @@ class Ui_powerSupply(object):
 
         self.lineEdit = QLineEdit(self.frame_7)
         self.lineEdit.setObjectName(u"lineEdit")
-        self.lineEdit.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
+        self.lineEdit.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_6.addWidget(self.lineEdit)
 
         self.parameters = QWidget(self.frame_7)
         self.parameters.setObjectName(u"parameters")
-        self.parameters.setMinimumSize(QSize(250, 210))
-        self.parameters.setMaximumSize(QSize(250, 210))
+        self.parameters.setMinimumSize(QSize(295, 210))
+        self.parameters.setMaximumSize(QSize(295, 210))
         self.horizontalLayout_4 = QHBoxLayout(self.parameters)
+        self.horizontalLayout_4.setSpacing(1)
         self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
+        self.horizontalLayout_4.setContentsMargins(2, 20, 2, 2)
         self.frame_5 = QFrame(self.parameters)
         self.frame_5.setObjectName(u"frame_5")
         self.frame_5.setFrameShape(QFrame.Box)
@@ -80,6 +83,8 @@ class Ui_powerSupply(object):
         self.gridLayout_2.setObjectName(u"gridLayout_2")
         self.step = QDoubleSpinBox(self.frame_5)
         self.step.setObjectName(u"step")
+        self.step.setAlignment(Qt.AlignCenter)
+        self.step.setButtonSymbols(QAbstractSpinBox.NoButtons)
 
         self.gridLayout_2.addWidget(self.step, 2, 1, 1, 1)
 
@@ -91,6 +96,8 @@ class Ui_powerSupply(object):
 
         self.stop = QDoubleSpinBox(self.frame_5)
         self.stop.setObjectName(u"stop")
+        self.stop.setAlignment(Qt.AlignCenter)
+        self.stop.setButtonSymbols(QAbstractSpinBox.NoButtons)
 
         self.gridLayout_2.addWidget(self.stop, 1, 1, 1, 1)
 
@@ -102,6 +109,8 @@ class Ui_powerSupply(object):
 
         self.start = QDoubleSpinBox(self.frame_5)
         self.start.setObjectName(u"start")
+        self.start.setAlignment(Qt.AlignCenter)
+        self.start.setButtonSymbols(QAbstractSpinBox.NoButtons)
 
         self.gridLayout_2.addWidget(self.start, 0, 1, 1, 1)
 
@@ -130,7 +139,11 @@ class Ui_powerSupply(object):
         self.frame_3.setFrameShape(QFrame.StyledPanel)
         self.frame_3.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_3 = QHBoxLayout(self.frame_3)
+#ifndef Q_OS_MAC
+        self.horizontalLayout_3.setSpacing(-1)
+#endif
         self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
+        self.horizontalLayout_3.setContentsMargins(4, 4, 4, 4)
         self.add = QPushButton(self.frame_3)
         self.add.setObjectName(u"add")
 
@@ -183,16 +196,16 @@ class Ui_powerSupply(object):
 
         self.horizontalLayout_6 = QHBoxLayout()
         self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
-        self.label_12 = QLabel(self.frame_8)
-        self.label_12.setObjectName(u"label_12")
-        self.label_12.setFont(font)
+        self.output_lbl = QLabel(self.frame_8)
+        self.output_lbl.setObjectName(u"output_lbl")
+        self.output_lbl.setFont(font)
 
-        self.horizontalLayout_6.addWidget(self.label_12)
+        self.horizontalLayout_6.addWidget(self.output_lbl)
 
-        self.checkBox_2 = QCheckBox(self.frame_8)
-        self.checkBox_2.setObjectName(u"checkBox_2")
+        self.output = QCheckBox(self.frame_8)
+        self.output.setObjectName(u"output")
 
-        self.horizontalLayout_6.addWidget(self.checkBox_2)
+        self.horizontalLayout_6.addWidget(self.output)
 
 
         self.verticalLayout_7.addLayout(self.horizontalLayout_6)
@@ -216,7 +229,7 @@ class Ui_powerSupply(object):
         QWidget.setTabOrder(self.add, self.clear)
         QWidget.setTabOrder(self.clear, self.items)
         QWidget.setTabOrder(self.items, self.checkBox)
-        QWidget.setTabOrder(self.checkBox, self.checkBox_2)
+        QWidget.setTabOrder(self.checkBox, self.output)
 
         self.retranslateUi(powerSupply)
 
@@ -237,7 +250,7 @@ class Ui_powerSupply(object):
         self.clear.setText(QCoreApplication.translate("powerSupply", u"clear", None))
         self.label_14.setText(QCoreApplication.translate("powerSupply", u"Idenify", None))
         self.checkBox.setText(QCoreApplication.translate("powerSupply", u"idenify", None))
-        self.label_12.setText(QCoreApplication.translate("powerSupply", u"TextLabel", None))
-        self.checkBox_2.setText(QCoreApplication.translate("powerSupply", u"output", None))
+        self.output_lbl.setText(QCoreApplication.translate("powerSupply", u"Front", None))
+        self.output.setText(QCoreApplication.translate("powerSupply", u"output", None))
     # retranslateUi
 
