@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'power_supplyanwGNq.ui'
+## Form generated from reading UI file 'power_supplyvJmANf.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.4.1
 ##
@@ -25,8 +25,9 @@ class Ui_powerSupply(object):
     def setupUi(self, powerSupply):
         if not powerSupply.objectName():
             powerSupply.setObjectName(u"powerSupply")
-        powerSupply.resize(561, 333)
+        powerSupply.resize(570, 417)
         self.horizontalLayout = QHBoxLayout(powerSupply)
+        self.horizontalLayout.setSpacing(6)
         self.horizontalLayout.setObjectName(u"horizontalLayout")
         self.frame_7 = QFrame(powerSupply)
         self.frame_7.setObjectName(u"frame_7")
@@ -35,9 +36,9 @@ class Ui_powerSupply(object):
         self.frame_7.setFrameShape(QFrame.Box)
         self.frame_7.setFrameShadow(QFrame.Raised)
         self.verticalLayout_6 = QVBoxLayout(self.frame_7)
-        self.verticalLayout_6.setSpacing(10)
+        self.verticalLayout_6.setSpacing(12)
         self.verticalLayout_6.setObjectName(u"verticalLayout_6")
-        self.verticalLayout_6.setContentsMargins(2, 2, 2, 2)
+        self.verticalLayout_6.setContentsMargins(4, 4, 2, 2)
         self.frame_6 = QFrame(self.frame_7)
         self.frame_6.setObjectName(u"frame_6")
         self.frame_6.setMaximumSize(QSize(16777215, 40))
@@ -63,9 +64,35 @@ class Ui_powerSupply(object):
 
         self.lineEdit = QLineEdit(self.frame_7)
         self.lineEdit.setObjectName(u"lineEdit")
+        self.lineEdit.setMinimumSize(QSize(0, 30))
+        self.lineEdit.setInputMethodHints(Qt.ImhNone)
         self.lineEdit.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_6.addWidget(self.lineEdit)
+
+        self.frame = QFrame(self.frame_7)
+        self.frame.setObjectName(u"frame")
+        self.frame.setMinimumSize(QSize(0, 55))
+        self.frame.setFrameShape(QFrame.StyledPanel)
+        self.frame.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_2 = QHBoxLayout(self.frame)
+        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
+        self.label = QLabel(self.frame)
+        self.label.setObjectName(u"label")
+
+        self.horizontalLayout_2.addWidget(self.label)
+
+        self.doubleSpinBox = QDoubleSpinBox(self.frame)
+        self.doubleSpinBox.setObjectName(u"doubleSpinBox")
+        self.doubleSpinBox.setMinimumSize(QSize(0, 30))
+        self.doubleSpinBox.setAlignment(Qt.AlignCenter)
+        self.doubleSpinBox.setButtonSymbols(QAbstractSpinBox.NoButtons)
+        self.doubleSpinBox.setMaximum(1000.000000000000000)
+
+        self.horizontalLayout_2.addWidget(self.doubleSpinBox)
+
+
+        self.verticalLayout_6.addWidget(self.frame)
 
         self.parameters = QWidget(self.frame_7)
         self.parameters.setObjectName(u"parameters")
@@ -74,7 +101,7 @@ class Ui_powerSupply(object):
         self.horizontalLayout_4 = QHBoxLayout(self.parameters)
         self.horizontalLayout_4.setSpacing(1)
         self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
-        self.horizontalLayout_4.setContentsMargins(2, 20, 2, 2)
+        self.horizontalLayout_4.setContentsMargins(2, 2, 2, 2)
         self.frame_5 = QFrame(self.parameters)
         self.frame_5.setObjectName(u"frame_5")
         self.frame_5.setFrameShape(QFrame.Box)
@@ -83,6 +110,7 @@ class Ui_powerSupply(object):
         self.gridLayout_2.setObjectName(u"gridLayout_2")
         self.step = QDoubleSpinBox(self.frame_5)
         self.step.setObjectName(u"step")
+        self.step.setMinimumSize(QSize(0, 30))
         self.step.setAlignment(Qt.AlignCenter)
         self.step.setButtonSymbols(QAbstractSpinBox.NoButtons)
 
@@ -96,6 +124,7 @@ class Ui_powerSupply(object):
 
         self.stop = QDoubleSpinBox(self.frame_5)
         self.stop.setObjectName(u"stop")
+        self.stop.setMinimumSize(QSize(0, 30))
         self.stop.setAlignment(Qt.AlignCenter)
         self.stop.setButtonSymbols(QAbstractSpinBox.NoButtons)
 
@@ -109,6 +138,7 @@ class Ui_powerSupply(object):
 
         self.start = QDoubleSpinBox(self.frame_5)
         self.start.setObjectName(u"start")
+        self.start.setMinimumSize(QSize(0, 30))
         self.start.setAlignment(Qt.AlignCenter)
         self.start.setButtonSymbols(QAbstractSpinBox.NoButtons)
 
@@ -240,9 +270,9 @@ class Ui_powerSupply(object):
         powerSupply.setWindowTitle(QCoreApplication.translate("powerSupply", u"Form", None))
         self.label_11.setText(QCoreApplication.translate("powerSupply", u"address", None))
         self.comboBox.setPlaceholderText(QCoreApplication.translate("powerSupply", u"select address", None))
-        self.lineEdit.setInputMask("")
         self.lineEdit.setText("")
         self.lineEdit.setPlaceholderText(QCoreApplication.translate("powerSupply", u"enter measurement name", None))
+        self.label.setText(QCoreApplication.translate("powerSupply", u"current_ma", None))
         self.label_10.setText(QCoreApplication.translate("powerSupply", u"step", None))
         self.label_8.setText(QCoreApplication.translate("powerSupply", u"start", None))
         self.label_9.setText(QCoreApplication.translate("powerSupply", u"stop", None))
