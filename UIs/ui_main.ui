@@ -189,9 +189,9 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset>
-     <normaloff>:/actions/actions/arrow-left-circle.svg</normaloff>
-     <normalon>:/actions/actions/arrow-right-circle.svg</normalon>:/actions/actions/arrow-left-circle.svg</iconset>
+    <iconset resource="../resource.qrc">
+     <normaloff>:/toolMenu/actions/arrow-left.svg</normaloff>
+     <normalon>:/toolMenu/actions/arrow-right.svg</normalon>:/toolMenu/actions/arrow-left.svg</iconset>
    </property>
    <property name="text">
     <string>hide_show_tree</string>
@@ -208,8 +208,8 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset>
-     <normaloff>:/actions/actions/play-circle.svg</normaloff>:/actions/actions/play-circle.svg</iconset>
+    <iconset resource="../resource.qrc">
+     <normaloff>:/toolMenu/actions/play-circle.svg</normaloff>:/toolMenu/actions/play-circle.svg</iconset>
    </property>
    <property name="text">
     <string>action_start</string>
@@ -220,8 +220,8 @@
   </action>
   <action name="action_stop">
    <property name="icon">
-    <iconset>
-     <normaloff>:/actions/actions/stop-circle.svg</normaloff>:/actions/actions/stop-circle.svg</iconset>
+    <iconset resource="../resource.qrc">
+     <normaloff>:/toolMenu/actions/stop-circle.svg</normaloff>:/toolMenu/actions/stop-circle.svg</iconset>
    </property>
    <property name="text">
     <string>action_stop</string>

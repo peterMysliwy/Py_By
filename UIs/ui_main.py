@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'ui_mainOrfKgi.ui'
+## Form generated from reading UI file 'ui_mainzhJxHx.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.3.1
+## Created by: Qt User Interface Compiler version 6.4.1
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -31,19 +31,19 @@ class Ui_MainWindow(object):
         self.actionhide_show_tree.setObjectName(u"actionhide_show_tree")
         self.actionhide_show_tree.setCheckable(True)
         icon = QIcon()
-        icon.addFile(u":/actions/actions/arrow-left-circle.svg", QSize(), QIcon.Normal, QIcon.Off)
-        icon.addFile(u":/actions/actions/arrow-right-circle.svg", QSize(), QIcon.Normal, QIcon.On)
+        icon.addFile(u":/toolMenu/actions/arrow-left.svg", QSize(), QIcon.Normal, QIcon.Off)
+        icon.addFile(u":/toolMenu/actions/arrow-right.svg", QSize(), QIcon.Normal, QIcon.On)
         self.actionhide_show_tree.setIcon(icon)
         self.action_start = QAction(MainWindow)
         self.action_start.setObjectName(u"action_start")
         self.action_start.setCheckable(True)
         icon1 = QIcon()
-        icon1.addFile(u":/actions/actions/play-circle.svg", QSize(), QIcon.Normal, QIcon.Off)
+        icon1.addFile(u":/toolMenu/actions/play-circle.svg", QSize(), QIcon.Normal, QIcon.Off)
         self.action_start.setIcon(icon1)
         self.action_stop = QAction(MainWindow)
         self.action_stop.setObjectName(u"action_stop")
         icon2 = QIcon()
-        icon2.addFile(u":/actions/actions/stop-circle.svg", QSize(), QIcon.Normal, QIcon.Off)
+        icon2.addFile(u":/toolMenu/actions/stop-circle.svg", QSize(), QIcon.Normal, QIcon.Off)
         self.action_stop.setIcon(icon2)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")

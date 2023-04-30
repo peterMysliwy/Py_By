@@ -1,8 +1,9 @@
 from PySide6 import QtGui
-from PySide6.QtCore import Qt, QEvent, Slot
+from PySide6.QtCore import Qt, QEvent, Slot, QVariantAnimation
 from PySide6.QtWidgets import QMainWindow, QTreeWidgetItem, QWidget, QMenu, QTreeWidget
 import importlib
 from experimental.container import Ui_MainWindow
+from helper_class.slide_anim import Slider
 
 PLUG_IN = {'chart': 'base_uis.UI_chart', 'power supply': 'loaders.Ps_loader', 'clicker': 'loaders.loadClickMe'}
 
@@ -14,13 +15,19 @@ class Experiment(QMainWindow, Ui_MainWindow):
         self.setupUi(self)
         self.treeWidget.installEventFilter(self)
 
+        self.slide_anim = QVariantAnimation(self)
+        self.slider = Slider(self.actionrun, self.actionshow, self.frame, self.slide_anim)
+
         chart = self.launch_view('chart')
         self.stackedWidget.addWidget(chart)
         self.tree_root(chart)
-        self.treeWidget.topLevelItem(0).text(0)
+        self.treeWidget.setCurrentItem(self.treeWidget.topLevelItem(0))
 
         # events
         self.treeWidget.itemClicked.connect(self.change_stacked_view)
+        self.actionrun.triggered.connect(self.start)
+        self.actionshow.triggered.connect(self.slider.hide_show)
+        self.actionstop.triggered.connect(self.stop)
 
     def eventFilter(self, source: QTreeWidget, event: QEvent) -> bool:
         if event.type() == QEvent.ContextMenu and source is self.treeWidget:
@@ -52,22 +59,24 @@ class Experiment(QMainWindow, Ui_MainWindow):
         item.setData(1, 0, child_widget)
 
     def tree_root(self, widget: QWidget):
-        """
-            ##########################################################
-            This is only used once refactor and move under chart
-            ##########################################################
-        """
+        """ This is only used once refactor and move under chart """
         parent = QTreeWidgetItem(self.treeWidget)
         parent.setText(0, widget.objectName())
         parent.setData(1, 0, widget)
 
     def change_stacked_view(self, currentItem: QTreeWidgetItem):
-        """
-            ################################################################################
-            change the selected item and tell the stacked widget to display
-            ################################################################################
-        """
+        """ change the selected item and tell the stacked widget to display """
         items = self.treeWidget.findItems(currentItem.text(0), Qt.MatchFlag.MatchRecursive, 0)
         data = items[0].data(1, 0)
         if data is not None:
             self.stackedWidget.setCurrentWidget(data)
+
+    def start(self, event: bool):
+        self.tabWidget.setCurrentIndex(0)
+        item = self.treeWidget.findItems('chart', Qt.MatchFlag.MatchCaseSensitive, 0)[0]
+        self.change_stacked_view(item)
+        self.treeWidget.setCurrentItem(item)
+        self.slider.start_changed(event)
+
+    def stop(self):
+        self.slider.stop_changed()

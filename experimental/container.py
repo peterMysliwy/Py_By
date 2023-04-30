@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'UI_containerbkfczN.ui'
+## Form generated from reading UI file 'UI_containernAbNEw.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.3.1
+## Created by: Qt User Interface Compiler version 6.4.1
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -11,21 +11,40 @@
 from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
     QMetaObject, QObject, QPoint, QRect,
     QSize, QTime, QUrl, Qt)
-from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
-    QFont, QFontDatabase, QGradient, QIcon,
-    QImage, QKeySequence, QLinearGradient, QPainter,
-    QPalette, QPixmap, QRadialGradient, QTransform)
+from PySide6.QtGui import (QAction, QBrush, QColor, QConicalGradient,
+    QCursor, QFont, QFontDatabase, QGradient,
+    QIcon, QImage, QKeySequence, QLinearGradient,
+    QPainter, QPalette, QPixmap, QRadialGradient,
+    QTransform)
 from PySide6.QtWidgets import (QAbstractItemView, QApplication, QFrame, QGridLayout,
     QHBoxLayout, QHeaderView, QLabel, QLineEdit,
-    QMainWindow, QMenuBar, QSizePolicy, QStackedWidget,
-    QStatusBar, QTabWidget, QTreeWidget, QTreeWidgetItem,
+    QMainWindow, QSizePolicy, QStackedWidget, QStatusBar,
+    QTabWidget, QToolBar, QTreeWidget, QTreeWidgetItem,
     QVBoxLayout, QWidget)
+import resource_rc
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
         MainWindow.resize(845, 485)
+        self.actionshow = QAction(MainWindow)
+        self.actionshow.setObjectName(u"actionshow")
+        self.actionshow.setCheckable(True)
+        icon = QIcon()
+        icon.addFile(u":/toolMenu/actions/arrow-left.svg", QSize(), QIcon.Normal, QIcon.Off)
+        icon.addFile(u":/toolMenu/actions/arrow-right.svg", QSize(), QIcon.Normal, QIcon.On)
+        self.actionshow.setIcon(icon)
+        self.actionrun = QAction(MainWindow)
+        self.actionrun.setObjectName(u"actionrun")
+        icon1 = QIcon()
+        icon1.addFile(u":/toolMenu/actions/play-circle.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.actionrun.setIcon(icon1)
+        self.actionstop = QAction(MainWindow)
+        self.actionstop.setObjectName(u"actionstop")
+        icon2 = QIcon()
+        icon2.addFile(u":/toolMenu/actions/stop-circle.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.actionstop.setIcon(icon2)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.horizontalLayout = QHBoxLayout(self.centralwidget)
@@ -47,6 +66,9 @@ class Ui_MainWindow(object):
         self.verticalLayout_3 = QVBoxLayout(self.tab)
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
         self.treeWidget = QTreeWidget(self.tab)
+        __qtreewidgetitem = QTreeWidgetItem()
+        __qtreewidgetitem.setText(0, u"1");
+        self.treeWidget.setHeaderItem(__qtreewidgetitem)
         self.treeWidget.setObjectName(u"treeWidget")
         self.treeWidget.setAlternatingRowColors(True)
         self.treeWidget.setSelectionMode(QAbstractItemView.SingleSelection)
@@ -141,13 +163,17 @@ class Ui_MainWindow(object):
         self.horizontalLayout.addWidget(self.frame_2)
 
         MainWindow.setCentralWidget(self.centralwidget)
-        self.menubar = QMenuBar(MainWindow)
-        self.menubar.setObjectName(u"menubar")
-        self.menubar.setGeometry(QRect(0, 0, 845, 22))
-        MainWindow.setMenuBar(self.menubar)
         self.statusbar = QStatusBar(MainWindow)
         self.statusbar.setObjectName(u"statusbar")
         MainWindow.setStatusBar(self.statusbar)
+        self.toolBar = QToolBar(MainWindow)
+        self.toolBar.setObjectName(u"toolBar")
+        MainWindow.addToolBar(Qt.TopToolBarArea, self.toolBar)
+
+        self.toolBar.addAction(self.actionshow)
+        self.toolBar.addSeparator()
+        self.toolBar.addAction(self.actionrun)
+        self.toolBar.addAction(self.actionstop)
 
         self.retranslateUi(MainWindow)
 
@@ -160,6 +186,9 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
+        self.actionshow.setText(QCoreApplication.translate("MainWindow", u"show", None))
+        self.actionrun.setText(QCoreApplication.translate("MainWindow", u"run", None))
+        self.actionstop.setText(QCoreApplication.translate("MainWindow", u"stop", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), QCoreApplication.translate("MainWindow", u"setup", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"device", None))
         self.label_2.setText(QCoreApplication.translate("MainWindow", u"lot number", None))
@@ -167,5 +196,6 @@ class Ui_MainWindow(object):
         self.label_6.setText(QCoreApplication.translate("MainWindow", u"comment", None))
         self.label_7.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), QCoreApplication.translate("MainWindow", u"information", None))
+        self.toolBar.setWindowTitle(QCoreApplication.translate("MainWindow", u"toolBar", None))
     # retranslateUi
 
