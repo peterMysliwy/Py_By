@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'power_supplyZqAEhV.ui'
+## Form generated from reading UI file 'power_supplygHLqAC.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.4.1
 ##
@@ -114,6 +114,8 @@ class Ui_powerSupply(object):
         self.step.setMinimumSize(QSize(0, 30))
         self.step.setAlignment(Qt.AlignCenter)
         self.step.setButtonSymbols(QAbstractSpinBox.NoButtons)
+        self.step.setMinimum(-125.000000000000000)
+        self.step.setMaximum(125.000000000000000)
 
         self.gridLayout_2.addWidget(self.step, 2, 1, 1, 1)
 
@@ -128,6 +130,8 @@ class Ui_powerSupply(object):
         self.stop.setMinimumSize(QSize(0, 30))
         self.stop.setAlignment(Qt.AlignCenter)
         self.stop.setButtonSymbols(QAbstractSpinBox.NoButtons)
+        self.stop.setMinimum(-125.000000000000000)
+        self.stop.setMaximum(125.000000000000000)
 
         self.gridLayout_2.addWidget(self.stop, 1, 1, 1, 1)
 
@@ -142,6 +146,8 @@ class Ui_powerSupply(object):
         self.start.setMinimumSize(QSize(0, 30))
         self.start.setAlignment(Qt.AlignCenter)
         self.start.setButtonSymbols(QAbstractSpinBox.NoButtons)
+        self.start.setMinimum(-125.000000000000000)
+        self.start.setMaximum(125.000000000000000)
 
         self.gridLayout_2.addWidget(self.start, 0, 1, 1, 1)
 

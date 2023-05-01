@@ -69,7 +69,7 @@ class Experiment(QMainWindow, Ui_MainWindow):
 
     def start(self, event: bool):
         self.tabWidget.setCurrentIndex(0)
-        item = self.treeWidget.topLevelItem(0).text(0)
+        item = self.treeWidget.topLevelItem(0)
         self.change_stacked_view(item)
         self.treeWidget.setCurrentItem(item)
         self.slider.start_changed(event)
