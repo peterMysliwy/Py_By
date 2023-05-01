@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'power_supplyvJmANf.ui'
+## Form generated from reading UI file 'power_supplyZqAEhV.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.4.1
 ##
@@ -88,6 +88,7 @@ class Ui_powerSupply(object):
         self.doubleSpinBox.setAlignment(Qt.AlignCenter)
         self.doubleSpinBox.setButtonSymbols(QAbstractSpinBox.NoButtons)
         self.doubleSpinBox.setMaximum(1000.000000000000000)
+        self.doubleSpinBox.setValue(1.000000000000000)
 
         self.horizontalLayout_2.addWidget(self.doubleSpinBox)
 
@@ -252,7 +253,8 @@ class Ui_powerSupply(object):
         self.horizontalLayout.addItem(self.horizontalSpacer_2)
 
         QWidget.setTabOrder(self.comboBox, self.lineEdit)
-        QWidget.setTabOrder(self.lineEdit, self.start)
+        QWidget.setTabOrder(self.lineEdit, self.doubleSpinBox)
+        QWidget.setTabOrder(self.doubleSpinBox, self.start)
         QWidget.setTabOrder(self.start, self.stop)
         QWidget.setTabOrder(self.stop, self.step)
         QWidget.setTabOrder(self.step, self.add)
