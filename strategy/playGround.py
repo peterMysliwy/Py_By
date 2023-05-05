@@ -25,7 +25,7 @@ class Sequencer:
         for idx, a in enumerate(self.current):
             self.change.append(a != previous[idx])
 
-    def get_finished(self, index: int):
+    def get_finished(self, index: int) -> bool:
         return index == math.prod(self.dev_sizes)
 
     def get_index(self, index: int) -> list:
