@@ -4,7 +4,7 @@ from PySide6.QtWidgets import QMainWindow, QTreeWidgetItem, QWidget, QMenu
 import importlib
 from experimental.container import Ui_MainWindow
 from helper_class.slide_anim import Slider
-from loaders import measurement_loader
+# from loaders import measurement_loader
 
 MEASUREMENTS = {'classic ip3': 'loaders.measurement_loader', 'cancellation ip3': 'loaders.measurement_loader', 'ultra ip3': 'loaders.measurement_loader'}
 PLUG_IN = {'chart': 'base_uis.UI_chart', 'power supply': 'loaders.Ps_loader', 'clicker': 'loaders.loadClickMe'}
@@ -23,7 +23,7 @@ class Experiment(QMainWindow, Ui_MainWindow):
         self.treeWidget.installEventFilter(self)
         self.treeWidget.setContextMenuPolicy(Qt.CustomContextMenu)
 
-        chart = self.launch_view('chart')
+        chart = self.plugin_launch('chart')
         self.stackedWidget.addWidget(chart)
         self.tree_root(chart)
         del self.plugin_name['chart']
@@ -50,22 +50,22 @@ class Experiment(QMainWindow, Ui_MainWindow):
             for key in PLUG_IN.keys():
                 sub_menu.addAction(key)
 
-        menu.triggered.connect(self.tree_clicked)
+        menu.triggered.connect(self.menu_item_selected)
         menu.exec(self.treeWidget.mapToGlobal(position))
 
     @Slot(QAction)
-    def tree_clicked(self, action: QAction) -> None:
+    def menu_item_selected(self, action: QAction) -> None:
         if action is not None:
-            process = self.launch_view(action.text())
+            process = self.plugin_launch(action.text())
             self.stackedWidget.addWidget(process)
             self.tree_append(process, action.text())
 
-    def launch_view(self, name: str):
+    def plugin_launch(self, name: str):
         process = importlib.import_module(self.plugin_name[name], '.')
         return process.Loader(self, name)
 
     def tree_append(self, child_widget: QWidget, name: str):
-        """ add the child which is the new plug in to column 1 """
+        """ add the text & child (which is the new plugin) to column 1 """
         item = QTreeWidgetItem(self.treeWidget.currentItem())
         item.setCheckState(0, Qt.Checked)
         item.setText(0, name)
