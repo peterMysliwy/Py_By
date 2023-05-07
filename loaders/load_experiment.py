@@ -4,7 +4,6 @@ from PySide6.QtWidgets import QMainWindow, QTreeWidgetItem, QWidget, QMenu
 import importlib
 from experimental.container import Ui_MainWindow
 from helper_class.slide_anim import Slider
-# from loaders import measurement_loader
 
 MEASUREMENTS = {'classic ip3': 'loaders.measurement_loader', 'cancellation ip3': 'loaders.measurement_loader', 'ultra ip3': 'loaders.measurement_loader'}
 PLUG_IN = {'chart': 'base_uis.UI_chart', 'power supply': 'loaders.Ps_loader', 'clicker': 'loaders.loadClickMe'}
@@ -72,8 +71,7 @@ class Experiment(QMainWindow, Ui_MainWindow):
         item.setData(1, 0, child_widget)
 
     def tree_root(self, widget: QWidget):
-        """ store the ui class in column 1
-            This is only used once refactor and move under chart """
+        """ This is only used once refactor and move under chart """
         parent = QTreeWidgetItem(self.treeWidget)
         parent.setText(0, widget.objectName())
         parent.setData(1, 0, widget)

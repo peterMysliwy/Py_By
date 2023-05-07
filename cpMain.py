@@ -2,7 +2,6 @@ import platform
 import sys
 
 from PySide6.QtWidgets import QApplication
-# from launchMain import MainWindow
 from loaders.load_experiment import Experiment
 
 if platform.system() == 'Windows':
