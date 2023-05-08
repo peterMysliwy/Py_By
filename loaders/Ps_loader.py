@@ -4,7 +4,7 @@ from UIs.ui_power_supply import Ui_powerSupply
 
 # class Ps(QWidget, Ui_powerSupply):
 class Loader(QWidget, Ui_powerSupply):
-    def __init__(self, parent):
+    def __init__(self, parent, name):
         super().__init__()
         self.parent = parent
         self.setupUi(self)
