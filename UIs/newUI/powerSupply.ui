@@ -62,6 +62,21 @@
        <enum>QFrame::Raised</enum>
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout_4">
+       <property name="spacing">
+        <number>2</number>
+       </property>
+       <property name="leftMargin">
+        <number>4</number>
+       </property>
+       <property name="topMargin">
+        <number>4</number>
+       </property>
+       <property name="rightMargin">
+        <number>4</number>
+       </property>
+       <property name="bottomMargin">
+        <number>4</number>
+       </property>
        <item>
         <widget class="QFrame" name="frame_4">
          <property name="minimumSize">
@@ -72,8 +87,14 @@
          </property>
          <property name="maximumSize">
           <size>
-           <width>300</width>
+           <width>350</width>
            <height>16777215</height>
+          </size>
+         </property>
+         <property name="sizeIncrement">
+          <size>
+           <width>0</width>
+           <height>0</height>
           </size>
          </property>
          <property name="frameShape">
@@ -83,6 +104,21 @@
           <enum>QFrame::Raised</enum>
          </property>
          <layout class="QGridLayout" name="gridLayout">
+          <property name="leftMargin">
+           <number>4</number>
+          </property>
+          <property name="topMargin">
+           <number>4</number>
+          </property>
+          <property name="rightMargin">
+           <number>4</number>
+          </property>
+          <property name="bottomMargin">
+           <number>4</number>
+          </property>
+          <property name="horizontalSpacing">
+           <number>1</number>
+          </property>
           <item row="0" column="0">
            <widget class="QLabel" name="address_lbl">
             <property name="font">

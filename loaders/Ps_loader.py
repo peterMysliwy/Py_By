@@ -13,7 +13,6 @@ class Loader(QWidget, Ui_powerSupply):
         self.add.clicked.connect(self.generate_list)
         self.clear.pressed.connect(self.items.clear)
         self.lineEdit.editingFinished.connect(self.rename_tree_item)
-        self.output.stateChanged.connect(self.change_output)
 
     def generate_list(self):
         """update the listview with values calculated from start, stop and step"""
@@ -25,9 +24,3 @@ class Loader(QWidget, Ui_powerSupply):
     def rename_tree_item(self):
         item = self.parent.treeWidget.currentItem()
         item.setText(0, self.lineEdit.text())
-
-    def change_output(self, state: int):
-        if state == 0:
-            self.output_label.setText('Front')
-        else:
-            self.output_label.setText('Rear')
