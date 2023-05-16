@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'power_supplygHLqAC.ui'
+## Form generated from reading UI file 'power_supplyDhsDnk.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.4.1
 ##
@@ -17,19 +17,31 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QAbstractSpinBox, QApplication, QCheckBox, QComboBox,
     QDoubleSpinBox, QFrame, QGridLayout, QHBoxLayout,
-    QLabel, QLineEdit, QListWidget, QListWidgetItem,
-    QPushButton, QSizePolicy, QSpacerItem, QVBoxLayout,
-    QWidget)
+    QHeaderView, QLabel, QLineEdit, QListWidget,
+    QListWidgetItem, QPushButton, QSizePolicy, QSpacerItem,
+    QTableWidget, QTableWidgetItem, QVBoxLayout, QWidget)
 
 class Ui_powerSupply(object):
     def setupUi(self, powerSupply):
         if not powerSupply.objectName():
             powerSupply.setObjectName(u"powerSupply")
-        powerSupply.resize(570, 417)
-        self.horizontalLayout = QHBoxLayout(powerSupply)
-        self.horizontalLayout.setSpacing(6)
+        powerSupply.resize(618, 443)
+        self.gridLayout = QGridLayout(powerSupply)
+        self.gridLayout.setObjectName(u"gridLayout")
+        self.verticalSpacer_3 = QSpacerItem(20, 0, QSizePolicy.Minimum, QSizePolicy.Expanding)
+
+        self.gridLayout.addItem(self.verticalSpacer_3, 0, 1, 1, 1)
+
+        self.horizontalSpacer_2 = QSpacerItem(7, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.gridLayout.addItem(self.horizontalSpacer_2, 1, 0, 1, 1)
+
+        self.widget = QWidget(powerSupply)
+        self.widget.setObjectName(u"widget")
+        self.horizontalLayout = QHBoxLayout(self.widget)
         self.horizontalLayout.setObjectName(u"horizontalLayout")
-        self.frame_7 = QFrame(powerSupply)
+        self.horizontalLayout.setContentsMargins(2, 2, -1, 2)
+        self.frame_7 = QFrame(self.widget)
         self.frame_7.setObjectName(u"frame_7")
         self.frame_7.setMinimumSize(QSize(305, 0))
         self.frame_7.setMaximumSize(QSize(305, 16777215))
@@ -207,7 +219,7 @@ class Ui_powerSupply(object):
 
         self.horizontalLayout.addWidget(self.frame_7)
 
-        self.frame_8 = QFrame(powerSupply)
+        self.frame_8 = QFrame(self.widget)
         self.frame_8.setObjectName(u"frame_8")
         self.frame_8.setMinimumSize(QSize(200, 0))
         self.frame_8.setMaximumSize(QSize(16777215, 16777215))
@@ -247,16 +259,28 @@ class Ui_powerSupply(object):
 
         self.verticalLayout_7.addLayout(self.horizontalLayout_6)
 
-        self.verticalSpacer_2 = QSpacerItem(20, 315, QSizePolicy.Minimum, QSizePolicy.Expanding)
+        self.ps_info = QTableWidget(self.frame_8)
+        self.ps_info.setObjectName(u"ps_info")
+
+        self.verticalLayout_7.addWidget(self.ps_info)
+
+        self.verticalSpacer_2 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
         self.verticalLayout_7.addItem(self.verticalSpacer_2)
 
 
         self.horizontalLayout.addWidget(self.frame_8)
 
-        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
-        self.horizontalLayout.addItem(self.horizontalSpacer_2)
+        self.gridLayout.addWidget(self.widget, 1, 1, 1, 2)
+
+        self.horizontalSpacer = QSpacerItem(7, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.gridLayout.addItem(self.horizontalSpacer, 1, 3, 1, 1)
+
+        self.verticalSpacer_4 = QSpacerItem(20, 0, QSizePolicy.Minimum, QSizePolicy.Expanding)
+
+        self.gridLayout.addItem(self.verticalSpacer_4, 2, 2, 1, 1)
 
         QWidget.setTabOrder(self.comboBox, self.lineEdit)
         QWidget.setTabOrder(self.lineEdit, self.doubleSpinBox)

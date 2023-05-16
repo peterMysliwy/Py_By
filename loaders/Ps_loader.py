@@ -8,6 +8,8 @@ class Loader(QWidget, Ui_powerSupply):
         self.parent = parent
         self.setupUi(self)
 
+        self.output.setTristate(False)
+
         # define events
         self.add.clicked.connect(self.generate_list)
         self.clear.pressed.connect(self.items.clear)
