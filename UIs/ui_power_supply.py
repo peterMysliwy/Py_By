@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'power_supplyfxVpcC.ui'
+## Form generated from reading UI file 'power_supplyXuHXQc.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.5.0
 ##

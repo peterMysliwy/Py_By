@@ -24,3 +24,10 @@ class state(Meas_strategy):
 
     def do(self, device: Device, data: dict):
         device.state(self.state)
+
+class Information(Meas_strategy):
+    def __init__(self, que):
+        self.que = que
+
+    def do(self, device: Device, data: dict):
+        device.information(self.que)

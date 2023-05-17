@@ -21,3 +21,6 @@ class Device(ABC):
 
     def state(self, state: bool):
         pass
+
+    def information(self, que):
+        pass

@@ -38,6 +38,9 @@ class Loader(QWidget, Ui_powerSupply):
             self.items.addItem(str(round(a * self.step.value() + self.start.value(), 2)))
         self.items.addItem(str(round(self.stop.value(), 2)))
 
+    def inforamtion(self, data: list):
+        print('result fetched')
+
     def rename_tree_item(self):
         item = self.parent.treeWidget.currentItem()
         item.setText(0, self.lineEdit.text())
