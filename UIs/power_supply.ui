@@ -119,19 +119,10 @@
            </property>
            <layout class="QHBoxLayout" name="horizontalLayout_5">
             <item>
-             <widget class="QLabel" name="label_11">
-              <property name="font">
-               <font>
-                <pointsize>12</pointsize>
-               </font>
-              </property>
-              <property name="text">
-               <string>address</string>
-              </property>
-             </widget>
-            </item>
-            <item>
              <widget class="QComboBox" name="comboBox">
+              <property name="inputMethodHints">
+               <set>Qt::ImhNone</set>
+              </property>
               <property name="placeholderText">
                <string>select address</string>
               </property>

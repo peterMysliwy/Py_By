@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'power_supplyTdfMdk.ui'
+## Form generated from reading UI file 'power_supplyfxVpcC.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.4.1
+## Created by: Qt User Interface Compiler version 6.5.0
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -59,17 +59,10 @@ class Ui_powerSupply(object):
         self.frame_6.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_5 = QHBoxLayout(self.frame_6)
         self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
-        self.label_11 = QLabel(self.frame_6)
-        self.label_11.setObjectName(u"label_11")
-        font = QFont()
-        font.setPointSize(12)
-        self.label_11.setFont(font)
-
-        self.horizontalLayout_5.addWidget(self.label_11)
-
         self.comboBox = QComboBox(self.frame_6)
         self.comboBox.addItem("")
         self.comboBox.setObjectName(u"comboBox")
+        self.comboBox.setInputMethodHints(Qt.ImhNone)
 
         self.horizontalLayout_5.addWidget(self.comboBox)
 
@@ -135,6 +128,8 @@ class Ui_powerSupply(object):
 
         self.label_10 = QLabel(self.frame_5)
         self.label_10.setObjectName(u"label_10")
+        font = QFont()
+        font.setPointSize(12)
         self.label_10.setFont(font)
 
         self.gridLayout_2.addWidget(self.label_10, 2, 0, 1, 1)
@@ -302,7 +297,6 @@ class Ui_powerSupply(object):
 
     def retranslateUi(self, powerSupply):
         powerSupply.setWindowTitle(QCoreApplication.translate("powerSupply", u"Form", None))
-        self.label_11.setText(QCoreApplication.translate("powerSupply", u"address", None))
         self.comboBox.setItemText(0, QCoreApplication.translate("powerSupply", u"Refresh", None))
 
         self.comboBox.setPlaceholderText(QCoreApplication.translate("powerSupply", u"select address", None))
