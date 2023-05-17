@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'power_supplyDhsDnk.ui'
+## Form generated from reading UI file 'power_supplyTdfMdk.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.4.1
 ##
@@ -25,9 +25,10 @@ class Ui_powerSupply(object):
     def setupUi(self, powerSupply):
         if not powerSupply.objectName():
             powerSupply.setObjectName(u"powerSupply")
-        powerSupply.resize(618, 443)
+        powerSupply.resize(545, 417)
         self.gridLayout = QGridLayout(powerSupply)
         self.gridLayout.setObjectName(u"gridLayout")
+        self.gridLayout.setContentsMargins(0, 0, 0, 0)
         self.verticalSpacer_3 = QSpacerItem(20, 0, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
         self.gridLayout.addItem(self.verticalSpacer_3, 0, 1, 1, 1)
@@ -40,7 +41,7 @@ class Ui_powerSupply(object):
         self.widget.setObjectName(u"widget")
         self.horizontalLayout = QHBoxLayout(self.widget)
         self.horizontalLayout.setObjectName(u"horizontalLayout")
-        self.horizontalLayout.setContentsMargins(2, 2, -1, 2)
+        self.horizontalLayout.setContentsMargins(2, 2, 2, 2)
         self.frame_7 = QFrame(self.widget)
         self.frame_7.setObjectName(u"frame_7")
         self.frame_7.setMinimumSize(QSize(305, 0))
@@ -67,6 +68,7 @@ class Ui_powerSupply(object):
         self.horizontalLayout_5.addWidget(self.label_11)
 
         self.comboBox = QComboBox(self.frame_6)
+        self.comboBox.addItem("")
         self.comboBox.setObjectName(u"comboBox")
 
         self.horizontalLayout_5.addWidget(self.comboBox)
@@ -301,6 +303,8 @@ class Ui_powerSupply(object):
     def retranslateUi(self, powerSupply):
         powerSupply.setWindowTitle(QCoreApplication.translate("powerSupply", u"Form", None))
         self.label_11.setText(QCoreApplication.translate("powerSupply", u"address", None))
+        self.comboBox.setItemText(0, QCoreApplication.translate("powerSupply", u"Refresh", None))
+
         self.comboBox.setPlaceholderText(QCoreApplication.translate("powerSupply", u"select address", None))
         self.lineEdit.setText("")
         self.lineEdit.setPlaceholderText(QCoreApplication.translate("powerSupply", u"enter measurement name", None))

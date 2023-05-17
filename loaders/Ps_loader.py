@@ -1,20 +1,35 @@
 from PySide6.QtWidgets import QWidget
+
 from UIs.ui_power_supply import Ui_powerSupply
 
 
 class Loader(QWidget, Ui_powerSupply):
-    def __init__(self, parent, name):
+    def __init__(self, parent, name, server_gpib):
         super().__init__()
         self.parent = parent
+        self.server = server_gpib
         self.setupUi(self)
 
-        self.output.setTristate(False)
+        self.comboBox.clear()
+        self.comboBox.addItem('')
+        self.comboBox.insertSeparator(self.comboBox.count())
+        self.comboBox.addItem('Refresh')
 
         # define events
+        self.comboBox.textActivated.connect(self.fill_addresses)
         self.add.clicked.connect(self.generate_list)
         self.clear.pressed.connect(self.items.clear)
         self.lineEdit.editingFinished.connect(self.rename_tree_item)
         self.output.stateChanged.connect(self.source_output)
+
+    def fill_addresses(self, text):
+        if text == 'Refresh':
+            self.comboBox.clear()
+            self.comboBox.addItem('')
+            self.comboBox.addItems(self.server.get_instrument_list())
+            self.comboBox.insertSeparator(self.comboBox.count())
+            self.comboBox.addItem('Refresh')
+
 
     def generate_list(self):
         """update the listview with values calculated from start, stop and step"""

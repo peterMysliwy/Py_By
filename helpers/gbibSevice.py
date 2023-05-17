@@ -1,6 +1,6 @@
 from dataclasses import dataclass
-from Strategy_meas import Meas_strategy
-from measurement import Measurement
+from helpers.Strategy_meas import Meas_strategy
+from helpers.measurement import Measurement
 from typing import Dict, List
 import string
 import random
@@ -33,6 +33,9 @@ class Server_gpib:
 
     def get_device(self, device_id: str) -> Measurement :
         return self.measurements[device_id]
+
+    def get_instrument_list(self) -> list:
+        return ['GPIB::001:INSTR', 'GPIB::009:INSTR', 'GPIB::010:INSTR']
 
     def run_strategys(self, actions: List[Message]):
         for msg in actions:

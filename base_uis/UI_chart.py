@@ -7,7 +7,7 @@ import random
 
 # class ChartView(QWidget):
 class Loader(QChartView):
-    def __init__(self, parent, name):
+    def __init__(self, parent, name, server_gpib):
         super(Loader, self).__init__()
         # super(ChartView, self).__init__()
 

@@ -1,11 +1,7 @@
-import random
-
 from PySide6.QtCore import Qt, QPropertyAnimation
 from PySide6.QtGui import QAction
 from PySide6.QtWidgets import QMainWindow, QTreeWidgetItem
 
-# from UIs.UI_chart import ChartView
-from UIs.not_used_ui_powerSupply import Ui_Form
 from UIs.ui_main import Ui_MainWindow
 
 

@@ -2,8 +2,10 @@ from PySide6.QtCore import Qt, QVariantAnimation, Slot
 from PySide6.QtGui import QAction
 from PySide6.QtWidgets import QMainWindow, QTreeWidgetItem, QWidget, QMenu
 import importlib
+
 from experimental.container import Ui_MainWindow
 from helper_class.slide_anim import Slider
+from helpers.gbibSevice import Server_gpib
 
 MEASUREMENTS = {'classic ip3': 'loaders.measurement_loader', 'cancellation ip3': 'loaders.measurement_loader', 'ultra ip3': 'loaders.measurement_loader'}
 PLUG_IN = {'chart': 'base_uis.UI_chart', 'power supply': 'loaders.Ps_loader', 'clicker': 'loaders.loadClickMe'}
@@ -14,6 +16,7 @@ class Experiment(QMainWindow, Ui_MainWindow):
         super(Experiment, self).__init__()
 
         self.setupUi(self)
+        self.server_GPIB = Server_gpib()
 
         self.plugin_name = PLUG_IN
         self.slide_anim = QVariantAnimation(self)
@@ -61,7 +64,7 @@ class Experiment(QMainWindow, Ui_MainWindow):
 
     def plugin_launch(self, name: str):
         process = importlib.import_module(self.plugin_name[name], '.')
-        return process.Loader(self, name)
+        return process.Loader(self, name, self.server_GPIB)
 
     def tree_append(self, child_widget: QWidget, name: str):
         """ add the text & child (which is the new plugin) to column 1 """

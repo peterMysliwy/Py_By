@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from device import Device
+from helpers.device import Device
 
 class Meas_strategy(ABC):
     @abstractmethod
