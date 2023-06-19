@@ -1,7 +1,8 @@
+from PySide6.QtCore import Signal
 from PySide6.QtWidgets import QWidget
 
 from UIs.ui_power_supply import Ui_powerSupply
-
+Signal()
 
 class Loader(QWidget, Ui_powerSupply):
     def __init__(self, parent, name, server_gpib):
@@ -38,7 +39,7 @@ class Loader(QWidget, Ui_powerSupply):
             self.items.addItem(str(round(a * self.step.value() + self.start.value(), 2)))
         self.items.addItem(str(round(self.stop.value(), 2)))
 
-    def inforamtion(self, data: list):
+    def information(self, data: list):
         print('result fetched')
 
     def rename_tree_item(self):
