@@ -81,7 +81,7 @@ class GPIB_drop_downPlugin(QDesignerCustomWidgetInterface):
         return QIcon(imgLocation)
 
     def includeFile(self):
-        return 'GPIB_drop_down'
+        return 'plugin.gpib_drop_down'
 
     def initialize(self, form_editor):
         self._form_editor = form_editor

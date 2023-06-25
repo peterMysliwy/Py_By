@@ -1,4 +1,4 @@
-from PySide6.QtCore import Qt, QVariantAnimation, Slot
+from PySide6.QtCore import Qt, QVariantAnimation, Slot, QEvent
 from PySide6.QtGui import QAction
 from PySide6.QtWidgets import QMainWindow, QTreeWidgetItem, QWidget, QMenu
 import importlib
@@ -8,7 +8,10 @@ from helper_class.slide_anim import Slider
 from helpers.gbibSevice import Server_gpib
 
 MEASUREMENTS = {'classic ip3': 'loaders.measurement_loader', 'cancellation ip3': 'loaders.measurement_loader', 'ultra ip3': 'loaders.measurement_loader'}
-PLUG_IN = {'chart': 'base_uis.UI_chart', 'power supply': 'loaders.Ps_loader', 'clicker': 'loaders.loadClickMe'}
+PLUG_IN = {'chart': 'base_uis.UI_chart',
+           'power supply': 'loaders.Ps_loader',
+           'clicker': 'loaders.loadClickMe',
+           'powerMeasurement': 'loaders.combo_loader'}
 
 
 class Experiment(QMainWindow, Ui_MainWindow):
@@ -34,6 +37,7 @@ class Experiment(QMainWindow, Ui_MainWindow):
         # events
         self.treeWidget.customContextMenuRequested.connect(self._show_context_menu)
         self.treeWidget.itemClicked.connect(self.change_stacked_view)
+        self.treeWidget.itemSelectionChanged.connect(self.tree_change)
         self.actionrun.triggered.connect(self.start)
         self.actionshow.triggered.connect(self.slider.hide_show)
         self.actionstop.triggered.connect(self.stop)
@@ -55,12 +59,16 @@ class Experiment(QMainWindow, Ui_MainWindow):
         menu.triggered.connect(self.menu_item_selected)
         menu.exec(self.treeWidget.mapToGlobal(position))
 
+    def tree_change(self):
+        print(f'tree changed ')
+
     @Slot(QAction)
     def menu_item_selected(self, action: QAction) -> None:
         if action is not None:
             process = self.plugin_launch(action.text())
             self.stackedWidget.addWidget(process)
             self.tree_append(process, action.text())
+            self.treeWidget.expandAll()
 
     def plugin_launch(self, name: str):
         process = importlib.import_module(self.plugin_name[name], '.')

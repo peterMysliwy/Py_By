@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>combo</class>
+ <widget class="QWidget" name="combo">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>604</width>
+    <height>311</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <widget class="GPIB_drop_down" name="signalgenerator"/>
+   </item>
+   <item row="0" column="1">
+    <widget class="GPIB_drop_down" name="powermeter"/>
+   </item>
+   <item row="1" column="0">
+    <widget class="TestPlugin" name="frequencies"/>
+   </item>
+   <item row="1" column="1">
+    <widget class="TestPlugin" name="powers"/>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>TestPlugin</class>
+   <extends>QWidget</extends>
+   <header>plufin.testplugin</header>
+  </customwidget>
+  <customwidget>
+   <class>GPIB_drop_down</class>
+   <extends>QWidget</extends>
+   <header>GPIB_drop_down</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>
