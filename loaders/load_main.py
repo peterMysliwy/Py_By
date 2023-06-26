@@ -10,8 +10,8 @@ from helpers.gbibSevice import ServerGpib
 MEASUREMENTS = {'classic ip3': 'loaders.load_measurement', 'cancellation ip3': 'loaders.load_measurement',
                 'ultra ip3': 'loaders.load_measurement'}
 
-PLUG_IN = {'chart': 'loaders.load_chart', 'power supply': 'loaders.load_ps',
-           'powerMeasurement': 'loaders.load_combo'}
+PLUG_IN = {'chart': 'loaders.load_chart', 'power_supply': 'loaders.load_power_supply',
+           'power_measurement': 'loaders.load_power_measurement'}
 
 
 class Experiment(QMainWindow, Ui_MainWindow):
