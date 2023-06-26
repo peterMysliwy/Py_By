@@ -82,7 +82,6 @@ class GpibSingleton:
         return self.event.signal
 
 
-
 class GPIB_drop_down(QWidget):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

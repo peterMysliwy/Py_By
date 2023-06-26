@@ -2,7 +2,7 @@ from PySide6.QtCore import Qt, QPropertyAnimation
 from PySide6.QtGui import QAction
 from PySide6.QtWidgets import QMainWindow, QTreeWidgetItem
 
-from UIs.ui_main import Ui_MainWindow
+from GUI.ui_main import Ui_MainWindow
 
 
 class MainWindow(QMainWindow, Ui_MainWindow):      # , Ui_MainWindow

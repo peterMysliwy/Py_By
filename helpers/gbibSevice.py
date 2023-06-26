@@ -5,8 +5,10 @@ from typing import Dict, List
 import string
 import random
 
+
 def generate_id(length: int = 8):
     return "".join(random.choices(string.ascii_uppercase, k=length))
+
 
 @dataclass
 class Message:
@@ -15,7 +17,7 @@ class Message:
     data: {}
 
 
-class Server_gpib:
+class ServerGpib:
     def __init__(self):
         self.measurements: Dict[str, Measurement] = {}
 
@@ -31,12 +33,12 @@ class Server_gpib:
         self.measurements[device_id].close()
         del self.measurements[device_id]
 
-    def get_device(self, device_id: str) -> Measurement :
+    def get_device(self, device_id: str) -> Measurement:
         return self.measurements[device_id]
 
     def get_instrument_list(self) -> list:
         return ['GPIB::001:INSTR', 'GPIB::009:INSTR', 'GPIB::010:INSTR']
 
-    def run_strategys(self, actions: List[Message]):
+    def run_strategy(self, actions: List[Message]):
         for msg in actions:
             self.measurements[msg.meas_id].send_message(msg.strategy, msg.data)

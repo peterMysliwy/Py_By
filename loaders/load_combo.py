@@ -1,5 +1,5 @@
 from PySide6.QtWidgets import QWidget
-from UIs.ui_combo import Ui_combo
+from GUI.ui_combo import Ui_combo
 
 
 class Loader(QWidget, Ui_combo):

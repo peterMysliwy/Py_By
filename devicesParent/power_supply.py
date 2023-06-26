@@ -20,4 +20,3 @@ class PowerSupply(Device_parent):
         except:
             pass
         return tuple(err)
-

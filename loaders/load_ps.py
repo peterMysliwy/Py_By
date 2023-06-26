@@ -1,7 +1,7 @@
 from PySide6.QtCore import Signal
 from PySide6.QtWidgets import QWidget
 
-from UIs.ui_power_supply import Ui_powerSupply
+from GUI.ui_power_supply import Ui_powerSupply
 Signal()
 
 class Loader(QWidget, Ui_powerSupply):

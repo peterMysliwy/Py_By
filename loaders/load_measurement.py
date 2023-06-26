@@ -1,6 +1,6 @@
 from PySide6.QtCore import Qt
 from PySide6.QtWidgets import QWidget
-from UIs.ui_measurement import Ui_measurement
+from GUI.ui_measurement import Ui_measurement
 
 
 class Loader(QWidget, Ui_measurement):

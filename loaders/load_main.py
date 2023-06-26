@@ -1,17 +1,17 @@
-from PySide6.QtCore import Qt, QVariantAnimation, Slot, QEvent
+from PySide6.QtCore import Qt, QVariantAnimation, Slot
 from PySide6.QtGui import QAction
 from PySide6.QtWidgets import QMainWindow, QTreeWidgetItem, QWidget, QMenu
 import importlib
 
-from experimental.container import Ui_MainWindow
+from GUI.container import Ui_MainWindow
 from helper_class.slide_anim import Slider
-from helpers.gbibSevice import Server_gpib
+from helpers.gbibSevice import ServerGpib
 
-MEASUREMENTS = {'classic ip3': 'loaders.measurement_loader', 'cancellation ip3': 'loaders.measurement_loader', 'ultra ip3': 'loaders.measurement_loader'}
-PLUG_IN = {'chart': 'base_uis.UI_chart',
-           'power supply': 'loaders.Ps_loader',
-           'clicker': 'loaders.loadClickMe',
-           'powerMeasurement': 'loaders.combo_loader'}
+MEASUREMENTS = {'classic ip3': 'loaders.load_measurement', 'cancellation ip3': 'loaders.load_measurement',
+                'ultra ip3': 'loaders.load_measurement'}
+
+PLUG_IN = {'chart': 'loaders.load_chart', 'power supply': 'loaders.load_ps',
+           'powerMeasurement': 'loaders.load_combo'}
 
 
 class Experiment(QMainWindow, Ui_MainWindow):
@@ -19,7 +19,7 @@ class Experiment(QMainWindow, Ui_MainWindow):
         super(Experiment, self).__init__()
 
         self.setupUi(self)
-        self.server_GPIB = Server_gpib()
+        self.server_GPIB = ServerGpib()
 
         self.plugin_name = PLUG_IN
         self.slide_anim = QVariantAnimation(self)
@@ -37,7 +37,6 @@ class Experiment(QMainWindow, Ui_MainWindow):
         # events
         self.treeWidget.customContextMenuRequested.connect(self._show_context_menu)
         self.treeWidget.itemClicked.connect(self.change_stacked_view)
-        self.treeWidget.itemSelectionChanged.connect(self.tree_change)
         self.actionrun.triggered.connect(self.start)
         self.actionshow.triggered.connect(self.slider.hide_show)
         self.actionstop.triggered.connect(self.stop)
@@ -59,9 +58,6 @@ class Experiment(QMainWindow, Ui_MainWindow):
         menu.triggered.connect(self.menu_item_selected)
         menu.exec(self.treeWidget.mapToGlobal(position))
 
-    def tree_change(self):
-        print(f'tree changed ')
-
     @Slot(QAction)
     def menu_item_selected(self, action: QAction) -> None:
         if action is not None:
@@ -80,6 +76,7 @@ class Experiment(QMainWindow, Ui_MainWindow):
         item.setCheckState(0, Qt.Checked)
         item.setText(0, name)
         item.setData(1, 0, child_widget)
+        self.treeWidget.setCurrentItem(item)
 
     def tree_root(self, widget: QWidget):
         """ This is only used once refactor and move under chart """
@@ -87,8 +84,8 @@ class Experiment(QMainWindow, Ui_MainWindow):
         parent.setText(0, widget.objectName())
         parent.setData(1, 0, widget)
 
-    def change_stacked_view(self, currentItem: QTreeWidgetItem):
-        self.stackedWidget.setCurrentWidget(currentItem.data(1, 0))
+    def change_stacked_view(self, current_item: QTreeWidgetItem):
+        self.stackedWidget.setCurrentWidget(current_item.data(1, 0))
 
     def start(self, event: bool):
         self.tabWidget.setCurrentIndex(0)
