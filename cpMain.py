@@ -2,7 +2,7 @@ import platform
 import sys
 
 from PySide6.QtWidgets import QApplication
-from loaders.load_experiment import Experiment
+from loaders.load_main import Experiment
 
 if platform.system() == 'Windows':
     sys.argv += ['-platform', 'windows:darkmode=2']

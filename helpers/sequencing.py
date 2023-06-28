@@ -20,8 +20,12 @@ class Sequencer:
         return result
 
     def _calc_change(self, index: int) -> None:
-        previous = self._calculate(index - 1)
-        self.change = [(a != previous[idx]) for idx, a in enumerate(self.current)]
+        if len(self.change) == 0:
+            for a in self.dev_sizes:
+                self.change.append(True)
+        else:
+            previous = self._calculate(index - 1)
+            self.change = [(a != previous[idx]) for idx, a in enumerate(self.current)]
 
     def debug(self, index: int):
         self.current = self._calculate(index)
@@ -32,7 +36,7 @@ class Sequencer:
         return math.prod(self.dev_sizes)
 
     def get_finished(self, index: int):
-        return index == self.get_sizes()
+        return index+1 == self.get_sizes()
 
     def get_index(self, index: int) -> list:
         if len(self.current) == 0:
@@ -43,10 +47,11 @@ class Sequencer:
 
 if __name__ == '__main__':
     indexer = Sequencer()
-    indexer.add_size(4)
+    indexer.add_size(1)
     indexer.add_size(2)
     indexer.add_size(3)
 
     for a in range(0, indexer.get_sizes()):
         # for b in indexer.dev_sizes:
         print(a, indexer.debug(a))
+

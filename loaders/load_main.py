@@ -2,11 +2,16 @@ from PySide6.QtCore import Qt, QVariantAnimation, Slot
 from PySide6.QtGui import QAction
 from PySide6.QtWidgets import QMainWindow, QTreeWidgetItem, QWidget, QMenu
 import importlib
-from experimental.container import Ui_MainWindow
-from helper_class.slide_anim import Slider
 
-MEASUREMENTS = {'classic ip3': 'loaders.measurement_loader', 'cancellation ip3': 'loaders.measurement_loader', 'ultra ip3': 'loaders.measurement_loader'}
-PLUG_IN = {'chart': 'base_uis.UI_chart', 'power supply': 'loaders.Ps_loader', 'clicker': 'loaders.loadClickMe'}
+from GUI.container import Ui_MainWindow
+from helper_class.slide_anim import Slider
+from helpers.gbibSevice import ServerGpib
+
+MEASUREMENTS = {'classic ip3': 'loaders.load_measurement', 'cancellation ip3': 'loaders.load_measurement',
+                'ultra ip3': 'loaders.load_measurement'}
+
+PLUG_IN = {'chart': 'loaders.load_chart', 'power_supply': 'loaders.load_power_supply',
+           'power_measurement': 'loaders.load_power_measurement'}
 
 
 class Experiment(QMainWindow, Ui_MainWindow):
@@ -14,6 +19,7 @@ class Experiment(QMainWindow, Ui_MainWindow):
         super(Experiment, self).__init__()
 
         self.setupUi(self)
+        self.server_GPIB = ServerGpib()
 
         self.plugin_name = PLUG_IN
         self.slide_anim = QVariantAnimation(self)
@@ -58,10 +64,11 @@ class Experiment(QMainWindow, Ui_MainWindow):
             process = self.plugin_launch(action.text())
             self.stackedWidget.addWidget(process)
             self.tree_append(process, action.text())
+            self.treeWidget.expandAll()
 
     def plugin_launch(self, name: str):
         process = importlib.import_module(self.plugin_name[name], '.')
-        return process.Loader(self, name)
+        return process.Loader(self, name, self.server_GPIB)
 
     def tree_append(self, child_widget: QWidget, name: str):
         """ add the text & child (which is the new plugin) to column 1 """
@@ -69,6 +76,7 @@ class Experiment(QMainWindow, Ui_MainWindow):
         item.setCheckState(0, Qt.Checked)
         item.setText(0, name)
         item.setData(1, 0, child_widget)
+        self.treeWidget.setCurrentItem(item)
 
     def tree_root(self, widget: QWidget):
         """ This is only used once refactor and move under chart """
@@ -76,8 +84,8 @@ class Experiment(QMainWindow, Ui_MainWindow):
         parent.setText(0, widget.objectName())
         parent.setData(1, 0, widget)
 
-    def change_stacked_view(self, currentItem: QTreeWidgetItem):
-        self.stackedWidget.setCurrentWidget(currentItem.data(1, 0))
+    def change_stacked_view(self, current_item: QTreeWidgetItem):
+        self.stackedWidget.setCurrentWidget(current_item.data(1, 0))
 
     def start(self, event: bool):
         self.tabWidget.setCurrentIndex(0)
