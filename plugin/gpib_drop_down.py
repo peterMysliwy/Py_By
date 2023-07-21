@@ -38,13 +38,13 @@
 ##
 ## $QT_END_LICENSE$
 
-import random
 from PySide6.QtCore import QSize, Slot, Qt, QObject, Signal
 from PySide6.QtWidgets import QComboBox, QApplication, QVBoxLayout, QWidget, QMainWindow, QLabel, QHBoxLayout
+import pyvisa as visa
 
 
 class Shared(QObject):
-    signal = Signal(list)
+    signal = Signal(list)   # for populating all other dropdowns when 1 gets refreshed
 
 
 class GpibSingleton:
@@ -53,21 +53,13 @@ class GpibSingleton:
     def __new__(cls, *args, **kwargs):
         if cls.__isinstance is None:
             cls.__isinstance = super().__new__(cls)
+            cls.rm = visa.ResourceManager()
             cls.event = Shared()
             cls._address_list = []
         return cls.__isinstance
 
-    def __init__(self):
-        pass
-
     def _generate_list(self):
-        self._address_list = [f'GPIB::00{random.randint(0, 32)}::INSTR' for a in range(5)]
-        self._list_sort()
-
-    def _list_sort(self):
-        number = [int(value[6:-7]) for value in self._address_list]    # strip out address numbers
-        number.sort()
-        self._address_list = [f'GPIB::00{a}::INSTR' for a in number]   # rebuild the list
+        self._address_list = list(self.rm.list_resources())
 
     @property
     def addresses(self) -> list:    # delete
@@ -83,13 +75,15 @@ class GpibSingleton:
 
 
 class GPIB_drop_down(QWidget):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+
+    def __init__(self,parent=None):
+        super().__init__(parent)
         self.gpib_resource = GpibSingleton()
 
         self.combo_box = QComboBox()
         self.combo_box.setPlaceholderText('select address')
-        self.combo_box.setMinimumSize(QSize(160, 20))
+        self.combo_box.setPlaceholderText('select address')
+
 
         self.label = QLabel('some text')
         self.label.setAlignment(Qt.AlignmentFlag.AlignCenter)
@@ -114,6 +108,9 @@ class GPIB_drop_down(QWidget):
     def populate_drop_down(self, selection: str):
         if selection == 'Refresh':
             self.gpib_resource.shared_signal.emit(self.gpib_resource.refresh())
+        if selection != '':
+            pass
+            # self.gpib_resource.
 
     @Slot(list)
     def _populate_drop_down(self, items: list):
@@ -125,6 +122,11 @@ class GPIB_drop_down(QWidget):
 
     def sizeHint(self):
         return QSize(300, 40)
+
+    def active_item(self) -> str:
+        return self.combo_box.currentText()
+
+    # def connect(self):
 
 
 if __name__ == '__main__':

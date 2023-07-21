@@ -9,5 +9,3 @@ from gpib_drop_downplugin import GPIB_drop_downPlugin
 if __name__ == '__main__':
     QPyDesignerCustomWidgetCollection.addCustomWidget(TestPluginPlugin())
     QPyDesignerCustomWidgetCollection.addCustomWidget(GPIB_drop_downPlugin())
-
-# Error running /Users/dads/PycharmProjects/Py_By/plugin/register_testplugin.py: No module named 'plugin'

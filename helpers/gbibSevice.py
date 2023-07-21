@@ -22,12 +22,9 @@ class ServerGpib:
         self.measurements: Dict[str, Measurement] = {}
 
     def connect(self, measurement: Measurement) -> str:
-        if measurement.init():
-            dev_id = generate_id()
-            self.measurements[dev_id] = measurement
-            return dev_id
-        else:
-            return 'Invalid device'
+        dev_id = generate_id()
+        self.measurements[dev_id] = measurement
+        return dev_id
 
     def close(self, device_id: str):
         self.measurements[device_id].close()
@@ -35,9 +32,6 @@ class ServerGpib:
 
     def get_device(self, device_id: str) -> Measurement:
         return self.measurements[device_id]
-
-    def get_instrument_list(self) -> list:
-        return ['GPIB::001:INSTR', 'GPIB::009:INSTR', 'GPIB::010:INSTR']
 
     def run_strategy(self, actions: List[Message]):
         for msg in actions:

@@ -6,25 +6,77 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>604</width>
-    <height>311</height>
+    <width>536</width>
+    <height>281</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="0" column="0">
-    <widget class="GPIB_drop_down" name="signalgenerator"/>
-   </item>
-   <item row="0" column="1">
-    <widget class="GPIB_drop_down" name="powermeter"/>
-   </item>
-   <item row="1" column="0">
-    <widget class="TestPlugin" name="frequencies"/>
+   <item row="3" column="2">
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
    </item>
    <item row="1" column="1">
+    <widget class="GPIB_drop_down" name="signalgenerator"/>
+   </item>
+   <item row="2" column="3">
+    <spacer name="horizontalSpacer_2">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>40</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="2" column="1">
+    <widget class="TestPlugin" name="frequencies"/>
+   </item>
+   <item row="1" column="2">
+    <widget class="GPIB_drop_down" name="powermeter"/>
+   </item>
+   <item row="2" column="0">
+    <spacer name="horizontalSpacer">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>40</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="2" column="2">
     <widget class="TestPlugin" name="powers"/>
+   </item>
+   <item row="0" column="1">
+    <spacer name="verticalSpacer_2">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
    </item>
   </layout>
  </widget>
@@ -32,12 +84,12 @@
   <customwidget>
    <class>TestPlugin</class>
    <extends>QWidget</extends>
-   <header>plufin.testplugin</header>
+   <header>plugin.testplugin</header>
   </customwidget>
   <customwidget>
    <class>GPIB_drop_down</class>
    <extends>QWidget</extends>
-   <header>GPIB_drop_down</header>
+   <header>plugin.gpib_drop_down</header>
   </customwidget>
  </customwidgets>
  <resources/>

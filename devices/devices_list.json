@@ -1,0 +1,17 @@
+{"power_supply":
+    {
+        "MODEL 2400": ["Ps_vintage", "Ps_2400"],
+        "MODEL 2400-C": ["Ps_vintage", "Ps_2400"],
+        "MODEL 2401": ["Ps_vintage", "Ps_2400"],
+        "MODEL 2420": ["Ps_vintage", "Ps_2400"],
+        "MODEL 2430": ["Ps_vintage", "Ps_2400"],
+        "MODEL 2440": ["Ps_vintage", "Ps_2400"],
+        "MODEL 2440-C": ["Ps_vintage", "Ps_2400"],
+        "MODEL 2450": ["Ps_new", "Ps_2450"]
+    },
+    "signal_generators":
+    {
+        "SMB100A": "RS_SMB100A",
+        "E5437A": "Sq_psg"
+    }
+}

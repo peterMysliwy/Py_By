@@ -1,5 +1,20 @@
 from pathlib import Path
+"""
+try:
+    # Some Code
+except:
+    # Executed if error in the
+    # try block
+else:
+    # execute if no exception
+finally:
+    # Some code .....(always executed)
+    """
 
+"""
+LOGGING
+    LEVELS Debug, Info, Warning, Error, Critical
+"""
 views = {'chart': 'base_uis.UI_chart', 'power supply': 'loaders.Ps_loader', 'click': 'loaders.loadClickMe'}
 
 # current working directory is where the python file that executes the directory function

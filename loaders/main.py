@@ -2,16 +2,20 @@ from PySide6.QtCore import Qt, QVariantAnimation, Slot
 from PySide6.QtGui import QAction
 from PySide6.QtWidgets import QMainWindow, QTreeWidgetItem, QWidget, QMenu
 import importlib
+from pathlib import Path
 
 from GUI.container import Ui_MainWindow
 from helper_class.slide_anim import Slider
 from helpers.gbibSevice import ServerGpib
+from toolBox.tree_utility import get_subtree_nodes, get_all_items
 
-MEASUREMENTS = {'classic ip3': 'loaders.load_measurement', 'cancellation ip3': 'loaders.load_measurement',
-                'ultra ip3': 'loaders.load_measurement'}
+picture_path = Path.cwd() / 'testsetups'
+pictures = [pict.name.removesuffix(".bmp") for pict in picture_path.iterdir() if pict.match('*.bmp')]
+MEASUREMENTS = {key: 'loaders.graphics_ui' for key in pictures}
 
-PLUG_IN = {'chart': 'loaders.load_chart', 'power_supply': 'loaders.load_power_supply',
-           'power_measurement': 'loaders.load_power_measurement'}
+
+PLUG_IN = {'chart': 'loaders.chart', 'power_supply': 'loaders.power_supply',
+           'power_measurement': 'loaders.power_measurement'}
 
 
 class Experiment(QMainWindow, Ui_MainWindow):
@@ -32,6 +36,7 @@ class Experiment(QMainWindow, Ui_MainWindow):
         self.stackedWidget.addWidget(chart)
         self.tree_root(chart)
         del self.plugin_name['chart']
+
         self.treeWidget.expandAll()
 
         # events
@@ -45,8 +50,8 @@ class Experiment(QMainWindow, Ui_MainWindow):
         menu = QMenu()
         current_name = self.treeWidget.currentItem().data(1, 0).objectName()
         if current_name == 'chart':
-            sub_menu = menu.addMenu('Add')
             self.plugin_name = MEASUREMENTS
+            sub_menu = menu.addMenu('Add')
             for key in MEASUREMENTS.keys():
                 sub_menu.addAction(key)
         elif current_name == 'measurement':
@@ -78,6 +83,11 @@ class Experiment(QMainWindow, Ui_MainWindow):
         item.setData(1, 0, child_widget)
         self.treeWidget.setCurrentItem(item)
 
+    @Slot(str)
+    def tree_name_change(self, new_name: str):
+        item = self.treeWidget.currentItem()
+        item.setText(0, new_name)
+
     def tree_root(self, widget: QWidget):
         """ This is only used once refactor and move under chart """
         parent = QTreeWidgetItem(self.treeWidget)
@@ -88,11 +98,27 @@ class Experiment(QMainWindow, Ui_MainWindow):
         self.stackedWidget.setCurrentWidget(current_item.data(1, 0))
 
     def start(self, event: bool):
+        # gui change setup for running
         self.tabWidget.setCurrentIndex(0)
         item = self.treeWidget.topLevelItem(0)
         self.change_stacked_view(item)
         self.treeWidget.setCurrentItem(item)
         self.slider.start_changed(event)
+
+        items = get_all_items(self.treeWidget)
+        del items[0]  # remove the top item
+
+        measurements = {}
+        for item in items:
+            """dictionary format KEY = measurement name, VALUES = measurement classes"""
+            if item.childCount() > 0:
+                children = get_subtree_nodes(item)
+                kids = [name.data(1, 0) for name in children]
+                del kids[0]  # I don't need the parent
+                measurements[item.text(0)] = kids
+
+        print(f'dictionary -> {measurements}')
+
 
     def stop(self):
         self.slider.stop_changed()
