@@ -1,26 +1,11 @@
-import sys
-class Foobar:
-    pass
-def str_to_class(str):
-    return getattr(sys.modules[__name__], str)
-print(str_to_class("Foobar"))
-print(type(Foobar))
+info = "Cal. Abs.:2022-12-14","Cal. Due Date:2024-12","Cal. Lin.:not applicable","Cal. Misc.:2022-12-14","Cal. Refl.:2022-12-14","Cal. S-Para.:not applicable","Cal. S-Para. (User):not applicable","Cal. Temp.:not applicable","Coupling:AC","Function:Power Terminating","Impedance:50","Manufacturer:Rohde & Schwarz","MaxFreq:1.8e+10","MaxPower:0.2","MinFreq:8000","MinPower:1e-10","Resolution:5e-07","SPD Mnemonic:","SW Build:02.40.22081101","Sensor Name:NRP18A-101753","Serial:101753","Stock Number:1424.6815K02","Technology:3-Path Diode","TestLimit:0.160 dB","TestLimit pd:0.160 dB","Type:NRP18A","Uptime:2642",""
+info = list(info)
+del info[len(info) - 1]
 
 
+data = {}
+for item in info:
+    key = item.split(':')
+    data[key[0]] = key[1]
 
-
-"""
-# Python code to demonstrate dictionary
-# comprehension
-
-# Lists to represent keys and values
-keys = ['a','b','c','d','e']
-values = [1,2,3,4,5]
-
-# but this line shows dict comprehension here
-myDict = { k:v for (k,v) in zip(keys, values)}
-
-# We can use below too
-# myDict = dict(zip(keys, values))
-
-print (myDict)"""
+print(data['MaxFreq'], data['MinFreq'])

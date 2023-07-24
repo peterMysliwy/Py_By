@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'comboNWXoqB.ui'
+## Form generated from reading UI file 'comboEZtUMv.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.5.0
 ##
@@ -25,44 +25,53 @@ class Ui_combo(object):
     def setupUi(self, combo):
         if not combo.objectName():
             combo.setObjectName(u"combo")
-        combo.resize(536, 281)
+        combo.resize(659, 534)
         self.gridLayout = QGridLayout(combo)
         self.gridLayout.setObjectName(u"gridLayout")
-        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+        self.verticalSpacer_2 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
-        self.gridLayout.addItem(self.verticalSpacer, 3, 2, 1, 1)
+        self.gridLayout.addItem(self.verticalSpacer_2, 0, 1, 1, 1)
 
         self.signalgenerator = GPIB_drop_down(combo)
         self.signalgenerator.setObjectName(u"signalgenerator")
 
-        self.gridLayout.addWidget(self.signalgenerator, 1, 1, 1, 1)
-
-        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-
-        self.gridLayout.addItem(self.horizontalSpacer_2, 2, 3, 1, 1)
-
-        self.frequencies = TestPlugin(combo)
-        self.frequencies.setObjectName(u"frequencies")
-
-        self.gridLayout.addWidget(self.frequencies, 2, 1, 1, 1)
+        self.gridLayout.addWidget(self.signalgenerator, 1, 1, 1, 2)
 
         self.powermeter = GPIB_drop_down(combo)
         self.powermeter.setObjectName(u"powermeter")
 
-        self.gridLayout.addWidget(self.powermeter, 1, 2, 1, 1)
+        self.gridLayout.addWidget(self.powermeter, 1, 3, 1, 2)
 
         self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
         self.gridLayout.addItem(self.horizontalSpacer, 2, 0, 1, 1)
 
-        self.powers = TestPlugin(combo)
-        self.powers.setObjectName(u"powers")
+        self.frequencies_Ghz = TestPlugin(combo)
+        self.frequencies_Ghz.setObjectName(u"frequencies_Ghz")
 
-        self.gridLayout.addWidget(self.powers, 2, 2, 1, 1)
+        self.gridLayout.addWidget(self.frequencies_Ghz, 2, 1, 1, 2)
 
-        self.verticalSpacer_2 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+        self.powers_Dbm = TestPlugin(combo)
+        self.powers_Dbm.setObjectName(u"powers_Dbm")
 
-        self.gridLayout.addItem(self.verticalSpacer_2, 0, 1, 1, 1)
+        self.gridLayout.addWidget(self.powers_Dbm, 2, 3, 1, 2)
+
+        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.gridLayout.addItem(self.horizontalSpacer_2, 2, 5, 1, 1)
+
+        self.compression_points = TestPlugin(combo)
+        self.compression_points.setObjectName(u"compression_points")
+
+        self.gridLayout.addWidget(self.compression_points, 3, 1, 1, 3)
+
+        self.horizontalSpacer_3 = QSpacerItem(279, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.gridLayout.addItem(self.horizontalSpacer_3, 3, 4, 1, 1)
+
+        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+
+        self.gridLayout.addItem(self.verticalSpacer, 4, 2, 1, 1)
 
 
         self.retranslateUi(combo)

@@ -5,7 +5,6 @@ class Ps_2400(Device):
     def __init__(self, address: str):
         super().__init__()
         self.power_supply = rm.open_resource(address)
-        # self.address = address
         print(f'{self.__class__.__name__} -> is valid')
 
     def connect(self, preset=True):

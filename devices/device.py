@@ -8,7 +8,7 @@ class Device(ABC):
     def __init__(self):
         ...
 
-    def connect(self):
+    def connect(self, preset=True):
         ...
 
     def disconnect(self):
@@ -20,7 +20,7 @@ class Device(ABC):
     def change(self, data: dict):
         ...
 
-    def read(self):
+    def read(self, data: dict):
         ...
 
     def state(self, state: bool):

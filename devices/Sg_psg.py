@@ -2,7 +2,7 @@ from devices.device import rm, Device
 import time
 
 
-class HardWare(Device):
+class Psg(Device):
     def __init__(self, address: str):
         super().__init__()
         self.signal_gen = rm.open_resource(address)
@@ -26,7 +26,7 @@ class HardWare(Device):
     def read(self):
         freq = float(self.signal_gen.query(':FREQ?'))
         pwr = float(self.signal_gen.query(':POW?'))
-        return [freq, pwr]
+        return [freq / 1e-9, pwr]
 
     def set_freq(self, freq: float):
         self.signal_gen.write(F':FREQ {freq * 1e9}')
